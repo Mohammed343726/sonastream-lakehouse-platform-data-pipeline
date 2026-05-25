@@ -1,0 +1,20 @@
+# --- Environnements Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# --- Variables d'environnement (Sécurité) ---
+.env
+
+# --- Fichiers Spark & Kafka temporaires ---
+spark-warehouse/
+metastore_db/
+derby.log
+checkpoint/
+
+# --- Fichiers système (Mac/Windows) ---
+.DS_Store
+Thumbs.db
