@@ -190,3 +190,17 @@ Data Lakehouse (Notre choix) : C'est le meilleur des deux mondes. Il combine la 
 
 "Le traitement Batch consiste à traiter un grand volume de données en une seule fois, souvent programmé la nuit (ex: calculer le chiffre d'affaires de la veille).
 Dans l'industrie lourde (Sonasid) ou la détection de fraude bancaire, le Batch est trop lent. Nous utilisons le Streaming (avec Kafka et PySpark). Les données sont traitées en flux continu, événement par événement, dès leur création. Cela nous permet d'avoir une latence de quelques millisecondes et de déclencher une alerte immédiate si la vibration d'un four devient anormale.
+
+
+
+
+
+
+
+
+
+🐳 DEEP DIVE 7 : venv vs Docker (Complémentarité en Data Engineering)
+1. Quelle est la différence entre venv et Docker, et quand les utiliser ?
+🇲🇦 B-Darija : venv w Docker machi m-nafasin, kay-kmmlou b3diyat-hom. venv kan-khdm bih f l-Local bax n-3zel ghir les bibliothèques dyal Python w n-codi b rahti. Mais mnin kan-bghi n-lo7 l-projet l-Production (Cloud), venv ma-kafix 7it ma-kay-hzzx l-Base de données awla Kafka. Hna kay-ji d-dawr dyal Docker li kay-jme3 l-OS, l-outils, w l-code Python f Container wahed bax y-khdem f ay blassa (Packaging).
+
+🇫🇷 En Français : venv et Docker répondent à des problématiques d'isolation à des échelles différentes. venv est un outil de niveau "Langage", utilisé en développement local pour isoler uniquement les dépendances Python (packages). Docker, en revanche, est un outil de niveau "Système". Il encapsule non seulement le code Python et ses dépendances, mais aussi le système d'exploitation sous-jacent, les variables d'environnement et les services externes (comme Kafka ou Postgres). En production, nous "conteneurisons" l'application entière : le venv devient alors obsolète car le conteneur Docker garantit déjà une isolation native et absolue.

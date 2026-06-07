@@ -1,24 +1,25 @@
-version: '3.8'
-
 services:
   zookeeper:
-    image: bitnami/zookeeper:latest
+    image: confluentinc/cp-zookeeper:7.3.2
     ports:
       - "2181:2181"
     environment:
-      - ALLOW_ANONYMOUS_LOGIN=yes
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
 
   kafka:
-    image: bitnami/kafka:latest
+    image: confluentinc/cp-kafka:7.3.2
+    depends_on:
+      - zookeeper
     ports:
       - "9092:9092"
     environment:
-      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
-      - ALLOW_ANONYMOUS_LOGIN=yes
-      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
-    depends_on:
-      - zookeeper
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://kafka:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_INTERNAL
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
 
   minio:
     image: minio/minio
@@ -32,9 +33,17 @@ services:
 
   postgres:
     image: postgres:15
+    container_name: sonastream-postgres
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_USER=sonasid_admin
-      - POSTGRES_PASSWORD=sonasid_pass
-      - POSTGRES_DB=sonastream_db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=sonastream
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+# Ila zedti l-volume l-foq, t2ked t-zido hta f l-te7t ga3 dyal l-fichier f la section volumes:
+volumes:
+  postgres_data:
