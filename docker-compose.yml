@@ -35,13 +35,24 @@ services:
     image: postgres:15
     container_name: sonastream-postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=sonastream
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: sonastream-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    depends_on:
+      - postgres
     restart: always
 
 # Ila zedti l-volume l-foq, t2ked t-zido hta f l-te7t ga3 dyal l-fichier f la section volumes:

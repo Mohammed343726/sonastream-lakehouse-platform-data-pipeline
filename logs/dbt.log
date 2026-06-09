@@ -1,0 +1,28 @@
+[0m10:18:36.522752 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AFDD428770>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AFDC4BAA50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AFDD012E70>]}
+
+
+============================== 10:18:36.580280 | 8a55cfec-68f0-458a-a18f-86020f79a03e ==============================
+[0m10:18:36.580280 [info ] [MainThread]: Running with dbt=1.8.2
+[0m10:18:36.585624 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\HP\\.dbt', 'version_check': 'True', 'debug': 'False', 'log_path': 'logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'invocation_command': 'dbt init dbt_sonastream', 'log_format': 'default', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m10:18:37.099704 [debug] [MainThread]: Starter project path: C:\Users\HP\Documents\sonastream-data-platform\spark_jobs\venv\Lib\site-packages\dbt\include\starter_project
+[0m10:18:37.194267 [info ] [MainThread]: 
+Your new dbt project "dbt_sonastream" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m10:18:37.196000 [info ] [MainThread]: Setting up your profile.
+[0m10:20:04.720674 [info ] [MainThread]: Profile dbt_sonastream written to C:\Users\HP\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m10:20:04.724106 [debug] [MainThread]: Command `dbt init` succeeded at 10:20:04.723510 after 88.55 seconds
+[0m10:20:04.724677 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AFDD53DCD0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AFDD1A02F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AFDD39F260>]}
+[0m10:20:04.725232 [debug] [MainThread]: Flushing usage events

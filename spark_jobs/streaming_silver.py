@@ -16,7 +16,7 @@ def write_to_postgres(df, epoch_id):
         try:
             df.write \
                 .format("jdbc") \
-                .option("url", "jdbc:postgresql://127.0.0.1:5432/sonastream") \
+                .option("url", "jdbc:postgresql://127.0.0.1:5433/sonastream") \
                 .option("driver", "org.postgresql.Driver") \
                 .option("dbtable", "silver_telemetry") \
                 .option("user", "postgres") \
@@ -72,7 +72,7 @@ def start_silver_streaming():
     query_postgres = df_silver.writeStream \
         .foreachBatch(write_to_postgres) \
         .outputMode("append") \
-        .option("checkpointLocation", "s3a://silver/checkpoints/postgres_telemetry") \
+        .option("checkpointLocation", "s3a://silver/checkpoints/postgres_telemetry_v2") \
         .start()
 
     spark.streams.awaitAnyTermination()
