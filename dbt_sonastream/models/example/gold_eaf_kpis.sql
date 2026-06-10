@@ -1,9 +1,9 @@
 {{ config(materialized='table') }}
 
-SELECT 
+SELECT
     equipement_status,
-    AVG(temperature_celsius) as moyenne_temperature,
-    MAX(vibration_hz) as max_vibration,
-    COUNT(*) as nombre_enregistrements
-FROM public.silver_telemetry
+    ROUND(AVG(temperature_celsius)::numeric, 2) AS moyenne_temperature,
+    ROUND(MAX(vibration_hz)::numeric, 2) AS max_vibration,
+    COUNT(*) AS nombre_enregistrements
+FROM {{ source('postgres_silver', 'silver_telemetry') }}
 GROUP BY equipement_status

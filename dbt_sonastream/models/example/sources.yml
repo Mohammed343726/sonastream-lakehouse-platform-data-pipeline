@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: postgres_silver
+    schema: public
+    tables:
+      - name: silver_telemetry
+        description: "L-data nqiya li jaya mn Spark (Silver Layer)"
